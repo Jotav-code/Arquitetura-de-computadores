@@ -3,7 +3,7 @@ module full_adder_1bit_sub(
   input b,
   input cin,
   output cout,
-  output s
+  output sum
 );
 
 
@@ -16,7 +16,7 @@ wire not_xor_ab;
 not(not_b, b);
 
 xor(xor_ab, a, not_b);
-xor(s, xor_ab, cin);
+xor(sum, xor_ab, cin);
 
 not(not_a, a);
 not(not_xor_ab, xor_ab);

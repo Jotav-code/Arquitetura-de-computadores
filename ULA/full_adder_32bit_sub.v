@@ -1,12 +1,12 @@
 module full_adder_32bit_sub(
-  input wire [31:0] a,
-  input wire [31:0] b,
-  output wire [32:0] s
+  input  [31:0] a,
+  input  [31:0] b,
+  output  [32:0] s
 );
 
 wire [30:0] cout;
 
-full_adder_1bit_sub f0( .a(a[0]), .b(b[0]), .cin(1'b0), .cout(cout[0]), .sum(s[0]) );
+full_adder_1bit_sub f0( .a(a[0]), .b(b[0]), .cin(1'b1), .cout(cout[0]), .sum(s[0]) );
 
 full_adder_1bit_sub f1( .a(a[1]), .b(b[1]), .cin(cout[0]), .cout(cout[1]), .sum(s[1]) );
 
