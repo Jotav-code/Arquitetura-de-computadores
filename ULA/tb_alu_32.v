@@ -24,12 +24,14 @@ module tb_alu_32;
     alu_control = 4'b0001; #10;
     $display("OR: a=%h b=%h out=%h zero=%b carry=%b overflow=%b", a, b, out_resultado, zero, carry_out, overflow);
 
-    // Teste SUB
-a = 32'd200; b = 32'd150; alu_control = 4'b0110; #10;
-$display("SUB: a=%d b=%d out=%d zero=%b carry=%b overflow=%b", a, b, out_resultado, zero, carry_out, overflow);
+// Teste SUB
+    a = 32'd200; b = 32'd150; alu_control = 4'b0110; #10;
+    // Use $signed() nas variáveis a, b e out_resultado
+    $display("SUB: a=%d b=%d out=%d zero=%b carry=%b overflow=%b", $signed(a), $signed(b), $signed(out_resultado), zero, carry_out, overflow);
 
-a = 32'd50; b = 32'd100; alu_control = 4'b0110; #10;
-$display("SUB: a=%d b=%d out=%d zero=%b carry=%b overflow=%b", a, b, out_resultado, zero, carry_out, overflow);
+    a = 32'd50; b = 32'd100; alu_control = 4'b0110; #10;
+    // Aqui o resultado será negativo (-50) graças ao $signed()
+    $display("SUB: a=%d b=%d out=%d zero=%b carry=%b overflow=%b", $signed(a), $signed(b), $signed(out_resultado), zero, carry_out, overflow);
 
 
     // Teste ADD

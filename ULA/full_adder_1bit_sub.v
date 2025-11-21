@@ -1,30 +1,27 @@
 module full_adder_1bit_sub(
-  input a,
-  input b,
-  input cin,
-  output cout,
-  output sum
+  input wire a,
+  input wire b,
+  input wire cin,
+  output wire sum,
+  output wire cout
 );
 
 
+
+
 wire xor_ab;
-wire not_a;
+wire and_ab, and_xor_ab_cin;
 wire not_b;
-wire and_Na_b, and_Nxor_ab_cin;
-wire not_xor_ab;
+
 
 not(not_b, b);
+
+and(and_ab, a, not_b);
+and(and_xor_ab_cin, xor_ab, cin);
 
 xor(xor_ab, a, not_b);
 xor(sum, xor_ab, cin);
 
-not(not_a, a);
-not(not_xor_ab, xor_ab);
-
-and(and_Nxor_ab_cin, not_xor_ab, cin);
-and(and_Na_b, not_a, not_b);
-
-or(cout, and_Na_b, and_Nxor_ab_cin);
-
+or(cout, and_ab, and_xor_ab_cin );
 
 endmodule
