@@ -36,6 +36,8 @@ module alu_32(
     endcase
   end
 
+  assign zero = (out_resultado == 32'd0);
+
 
 
 endmodule
