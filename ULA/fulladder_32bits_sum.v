@@ -1,10 +1,12 @@
 module fulladder_32bits_sum(
   input [31:0] a,
   input [31:0] b,
-  output [32:0] s
+  output [31:0] s,
+  output carry_out,
+  output overflow
 );
 
-wire [30:0] cout;
+wire [31:0] cout;
 
 full_adder_1bit_sum f0( .a(a[0]), .b(b[0]), .cin(1'b0), .cout(cout[0]), .sum(s[0]) );
 
@@ -68,6 +70,9 @@ full_adder_1bit_sum f29(.a(a[29]),.b(b[29]),.cin(cout[28]),.cout(cout[29]),.sum(
 
 full_adder_1bit_sum f30(.a(a[30]),.b(b[30]),.cin(cout[29]),.cout(cout[30]),.sum(s[30]) );
 
-full_adder_1bit_sum f31(.a(a[31]),.b(b[31]),.cin(cout[30]),.cout(s[32]),.sum(s[31]) );
+full_adder_1bit_sum f31(.a(a[31]),.b(b[31]),.cin(cout[30]),.cout(cout[31]),.sum(s[31]) );
+
+assign carry_out = cout[31];
+assign overflow = cout[31] ^ cout[30];
 
 endmodule
