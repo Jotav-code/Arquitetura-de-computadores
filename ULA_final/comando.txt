@@ -1,0 +1,2 @@
+iverilog -o simulacao_adv tb_alu_32.v alu_32.v full_adder_1bit_sub.v full_adder_1bit_sum.v full_adder_32bit_sub.v fulladder_32bits_sum.v
+vvp simulacao_adv
